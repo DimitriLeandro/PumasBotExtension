@@ -1,19 +1,32 @@
 $(document).ready(function() {
 
-	var urlAtual = window.location.href;
+	var urlPath = window.location.pathname; //	->	/ProjetoExtensaoMaua/Core/cadastrar_triagem.php
+	var urlParameters = window.location.search; //	->	?cd_paciente=113&rodarBot=true
 	
-	switch(urlAtual){
-		case "http://localhost/ProjetoExtensaoMaua/Core/menu.php":
-			console.log("Iniciando Bot.");
-			window.location.href = "cadastrar_paciente.php?rodarBot=true";
-			break;
-		case "http://localhost/ProjetoExtensaoMaua/Core/cadastrar_paciente.php?rodarBot=true":
-			console.log("Bot cadastrando paciente.");
-			cadastrar_paciente();
-			break;
-		default:
-			console.log("Bot inativo pois a URL não se enquadra em nenhuma situação.");
-			break;
+	if(urlParameters.includes("rodarBot=true") || urlPath.includes("/php/actions/")){
+		console.log("BOT EM EXECUÇÃO.");
+		switch(urlPath){
+			case "/ProjetoExtensaoMaua/Core/menu.php":
+				window.location.href = "cadastrar_paciente.php?rodarBot=true";				
+				break;
+			
+			case "/ProjetoExtensaoMaua/Core/cadastrar_paciente.php":
+				cadastrar_paciente();
+				break;
+
+			case "/ProjetoExtensaoMaua/Core/php/actions/action_cadastrar_paciente.php":
+				window.location.href = "../../visualizar_espera.php?rodarBot=true";
+				break;			
+			
+			case "/ProjetoExtensaoMaua/Core/visualizar_espera.php":
+				iniciar_triagem();
+				break;
+			case "/ProjetoExtensaoMaua/Core/cadastrar_triagem.php":
+				alert("Vamo que vamo");
+				break;
+		}
+	} else {
+		console.log("BOT PARADO.");
 	}
 });
 
@@ -138,4 +151,20 @@ function cadastrar_paciente(){
 		    }, 1000);
 	    }, 1000);
     }, 1000);
+}
+
+function iniciar_triagem(){
+	var i = 0;
+	var redirect = "menu.php?rodarBot=true";
+
+	$("button").each(function(){
+		if($(this).text() == "Nova Triagem"){
+			if(i == 0){
+				redirect = $(this).attr('id') + "&rodarBot=true";
+			}
+			i++;			
+		}
+	});
+
+	window.location.href = redirect;
 }
