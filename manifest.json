@@ -1,0 +1,45 @@
+{
+	// Obrigatório
+	"manifest_version": 2,
+	"name": "PumasBotExtension",
+	"version": "1.0",
+
+	// Descrição da nossa extensão
+	"description": "Bot para testar o Projeto Pumas",
+
+	// Íconea da nossa extensão
+	"icons": {
+		"256": "icon.png"
+	},
+
+	// Utilizaremos as "Page Actions" e registramos isso aqui
+    "page_action": {
+        "default_icon": { 
+            "256" : "icon.png"            
+        },
+        "default_title": "PumasBotExtension"
+    },
+
+    // Aqui declaramos as permirsões que precisamos
+    "permissions": [ 
+        "tabs",
+        "bookmarks",
+        "http://*/*", 
+        "https://*/*",
+        "nativeMessaging",
+        "declarativeContent",
+        "unlimitedStorage"
+    ],
+
+    // Utilizaremos uma "Event Page" (note o persistent: false)
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+
+    // Injetaremos esses arquivos quando "match" ocorrer
+    "content_scripts": [ {
+        "js": [ "js/jquery.js", "js/main.js" ],
+        "matches": [ "http://*/ProjetoExtensaoMaua/*" ]
+    } ]
+}
