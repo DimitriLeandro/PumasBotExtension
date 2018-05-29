@@ -3,7 +3,7 @@ $(document).ready(function() {
 	var urlAtual = window.location.href;
 	
 	switch(urlAtual){
-		case "http://localhost/ProjetoExtensaoMaua/Core/menu.php?rodarBot=true":
+		case "http://localhost/ProjetoExtensaoMaua/Core/menu.php":
 			console.log("Iniciando Bot.");
 			window.location.href = "cadastrar_paciente.php?rodarBot=true";
 			break;
