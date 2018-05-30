@@ -3,7 +3,7 @@ $(document).ready(function() {
 	var urlPath = window.location.pathname; //	->	/ProjetoExtensaoMaua/Core/cadastrar_triagem.php
 	var urlParameters = window.location.search; //	->	?cd_paciente=113&rodarBot=true
 	
-	if(urlParameters.includes("rodarBot=true") || urlPath.includes("/php/actions/")){
+	if(urlParameters.includes("rodarBot=true")){
 		console.log("BOT EM EXECUÇÃO.");
 		switch(urlPath){
 			case "/ProjetoExtensaoMaua/Core/menu.php":
@@ -16,7 +16,7 @@ $(document).ready(function() {
 
 			case "/ProjetoExtensaoMaua/Core/php/actions/action_cadastrar_paciente.php":
 				window.location.href = "../../visualizar_espera.php?rodarBot=true";
-				break;			
+				break;		
 			
 			case "/ProjetoExtensaoMaua/Core/visualizar_espera.php":
 				verificar_lista_espera();
