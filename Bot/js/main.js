@@ -208,16 +208,17 @@ function verificar_lista_espera(){
 	var i = 0;
 	var redirect = "menu.php?rodarBot=true";
 
-	$("button").each(function(){
-		if($(this).text() == "Nova Triagem"){
-			if(i == 0){
-				redirect = $(this).attr('id') + "&rodarBot=true";
+	setTimeout(function(){
+		$("button").each(function(){
+			if($(this).text() == "Nova Triagem"){
+				if(i == 0){
+					redirect = $(this).attr('id') + "&rodarBot=true";
+				}
+				i++;			
 			}
-			i++;			
-		}
-	});
-
-	window.location.href = redirect;
+		});
+		window.location.href = redirect;
+	}, 1000);
 }
 
 function verificar_triagens_abertas(){
