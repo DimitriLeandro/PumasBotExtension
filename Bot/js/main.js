@@ -42,10 +42,12 @@ $(document).ready(function() {
 				break;							
 		}
 	} else {
-		console.log("A extensão PumasBotExtension está ligada. O Bot iniciará o trabalho em 5 segundos.");	
-		setTimeout(function(){
-			window.location.href = "/ProjetoExtensaoMaua/Core/menu.php?rodarBot=true";
-		}, 5000);		
+		if(urlPath != "/ProjetoExtensaoMaua/Core/users/login.php"){
+			console.log("A extensão PumasBotExtension está ligada. O Bot iniciará o trabalho em 5 segundos.");	
+			setTimeout(function(){
+				window.location.href = "/ProjetoExtensaoMaua/Core/menu.php?rodarBot=true";
+			}, 5000);
+		}		
 	}
 });
 
