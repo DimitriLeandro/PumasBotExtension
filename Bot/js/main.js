@@ -7,7 +7,7 @@ $(document).ready(function() {
 		console.log("BOT EM EXECUÇÃO.");
 		switch(urlPath){
 			case "/ProjetoExtensaoMaua/Core/menu.php":
-				window.location.href = "cadastrar_paciente.php?rodarBot=true";				
+				window.location.href = "cadastrar_paciente.php?rodarBot=true";
 				break;
 			
 			case "/ProjetoExtensaoMaua/Core/cadastrar_paciente.php":
@@ -46,7 +46,7 @@ $(document).ready(function() {
 			console.log("A extensão PumasBotExtension está ligada. O Bot iniciará o trabalho em 5 segundos.");	
 			setTimeout(function(){
 				window.location.href = "/ProjetoExtensaoMaua/Core/menu.php?rodarBot=true";
-			}, 5000);
+			}, 2500);
 		}		
 	}
 });
@@ -81,7 +81,7 @@ function cadastrar_paciente(){
 	}
 
 	//SEXO----------------------------------------------------------
-	var sexo = numAleatorio(0, 9);
+	var sexo = numAleatorio(1, 10);
 	if(sexo % 2 != 0){
 		$("#ic_sexo").val("Masculino");
 	} else {
@@ -257,6 +257,7 @@ function verificar_btn_diagnostico(){
 }
 
 function numAleatorio(inicio, fim) {
+	inicio--;
 	var intervalo = fim - inicio;
 	return (inicio + Math.floor((Math.random() * intervalo) + 1));
 }
